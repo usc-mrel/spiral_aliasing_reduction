@@ -1,6 +1,9 @@
+%% add path
 addpath ./mfile/
 
+%% clear, clc, close all
 ccc
+
 %% raw data path
 files = dir('./RawData/*.mat');
 
@@ -11,12 +14,12 @@ if ~isfolder(para.dir.output_dir)
     mkdir(para.dir.output_dir)
 end
 
-%% set parameters
+%% set settings
 para.setting.ifplot = 1;        % plot convergence during reconstruction 
 para.setting.ifGPU  = 0;        % set to 1 when you want to use GPU
 para.Recon.time_frames = 101:200;   %set to 'all' for reconstructe all time frames (could take a while)
 
-%% set parameters
+%% set recon parameters
 para.weight_tTV = 0.08;                         % temporal TV regularizaiton parameter (normalized by F^T d)
 para.weight_sTV = 0;                            % spatial TV regularizaiton parameter (normalized by F^T d)
 
@@ -30,7 +33,6 @@ para.Recon.break        = 1;                    % stop iteration if creteria met
 para.Recon.matrix_size  = [84, 84];             % acquisition image matrix size
 
 %% do the recon
-
 methods = {'ES', 'LF', 'no'};
 
 for i = 1:3
