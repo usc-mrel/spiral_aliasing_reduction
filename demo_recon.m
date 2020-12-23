@@ -1,7 +1,7 @@
 addpath ./mfile/
 
 ccc
-%% add ismrmd and mfile path
+%% raw data path
 files = dir('./RawData/*.mat');
 
 %% change the bellowing for running a different dataset
