@@ -1,12 +1,15 @@
-ccc
-
-%% add ismrmd and mfile path
 addpath ./mfile/
+
+ccc
+%% add ismrmd and mfile path
 files = dir('./RawData/*.mat');
 
 %% change the bellowing for running a different dataset
 para.dir.raw_file   = fullfile(files.folder, files.name);
 para.dir.output_dir = './ReconData';
+if ~isfolder(para.dir.output_dir)
+    mkdir(para.dir.output_dir)
+end
 
 %% set parameters
 para.setting.ifplot = 1;        % plot convergence during reconstruction 
