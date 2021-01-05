@@ -32,8 +32,15 @@ para.Recon.image_size  = round(matrix_size * para.Recon.FOV);
 scale_factor = 1e3 * prod(para.Recon.image_size) / max(abs(kdata(:)));
 kSpace = single(permute(kdata,[1, 3, 2])) * scale_factor;
 
-kx = real(kloc);
-ky = imag(kloc);
+% correct image orintation (90 degree roation)
+kx = -imag(kloc);
+ky = real(kloc);
+
+% kx_ = -ky;
+% ky_ = kx;
+% 
+% kx = kx_;
+% ky = ky_;
 
 clearvars -except kSpace kx ky w para
 
@@ -106,7 +113,7 @@ clearvars -except Data para
 [Image_recon, para] = STCR_conjugate_gradient(Data, para);
 
 %% rotate, crop image
-Image_recon = rot90(abs(Image_recon));
+Image_recon = abs(Image_recon);
 Image_recon = crop_half_FOV(Image_recon, para.Recon.matrix_size);
 
 %% save reconstruction

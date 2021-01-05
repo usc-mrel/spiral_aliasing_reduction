@@ -22,7 +22,7 @@ Image_sos = sos(Image_mean);
 
 %% display image
 figure
-imagesc(rot90(Image_sos))
+imagesc(Image_sos)
 axis image
 axis off
 colormap gray
@@ -76,7 +76,7 @@ time_ar = toc(t1);
 %% display image
 Image_ar = NUFFT.NUFFT_adj(kSpace_ar, N);
 figure
-imagesc(rot90(sos(Image_ar)))
+imagesc(sos(Image_ar))
 axis image
 axis off
 colormap gray
