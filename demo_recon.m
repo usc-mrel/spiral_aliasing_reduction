@@ -5,7 +5,7 @@ addpath ./mfile/
 ccc
 
 %% raw data path
-files = dir('./RawData/*.mat');
+files = dir('./RawData/lac*.mat');
 
 %% change the bellowing for running a different dataset
 para.dir.raw_file   = fullfile(files.folder, files.name);

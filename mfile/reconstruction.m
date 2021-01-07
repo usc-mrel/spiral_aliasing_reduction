@@ -36,12 +36,6 @@ kSpace = single(permute(kdata,[1, 3, 2])) * scale_factor;
 kx = -imag(kloc);
 ky = real(kloc);
 
-% kx_ = -ky;
-% ky_ = kx;
-% 
-% kx = kx_;
-% ky = ky_;
-
 clearvars -except kSpace kx ky w para
 
 [sx, ns, nc] = size(kSpace);
