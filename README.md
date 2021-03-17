@@ -1,4 +1,4 @@
-# spiral_aliasing_reduction
+# Spiral Aliasing Reduction
 
 This is the repository for code used in the paper "*Ye Tian, Yongwan Lim, Ziwei Zhao, Dani Byrd, Shrikanth Narayanan, Krishna S. Nayak. Aliasing Artifact Reduction in Spiral Real-Time MRI. Magn Reson Med. https://doi.org/10.1002/mrm.28746.*"
 
