@@ -41,10 +41,10 @@ kx = reshape(kx,[sx,nos_one,Nframe]);
 ky = reshape(ky,[sx,nos_one,Nframe]);
 
 t1 = tic;
-N = NUFFT.init_new_2(squeeze(kx),squeeze(ky),1,[4,4],imsize(1),imsize(1));
+N = NUFFT.init(squeeze(kx),squeeze(ky),1,[4,4],imsize(1),imsize(1));
 N.W = single(w(:,1));
 
-Image_mean = NUFFT.NUFFT_adj_new_2(permute(kSpace, [1, 3, 2, 4]),N);
+Image_mean = NUFFT.NUFFT_adj(permute(kSpace, [1, 3, 2, 4]),N);
 
 %% artifact reduction
 
@@ -125,9 +125,9 @@ mask(CC.PixelIdxList{idx}) = true;
 % end
 % end
 
-k = NUFFT.NUFFT_new_2(Image_mean .* mask, N);
+k = NUFFT.NUFFT(Image_mean .* mask, N);
 
-mask_im = NUFFT.NUFFT_adj_new_2(k, N);
+mask_im = NUFFT.NUFFT_adj(k, N);
 
 A = Image_mean(repmat(mask, [1, 1, 1, nc]));
 B = mask_im(repmat(mask, [1, 1, 1, nc]));
@@ -139,7 +139,7 @@ kSpace = kSpace - permute(k, [1, 3, 2, 4]) * scale_k;
 kdata = permute(kSpace, [1, 4, 3, 2]) / scale_factor;
 time_ar = toc(t1);
 
-Image_ar = NUFFT.NUFFT_adj_new_2(permute(kSpace, [1, 3, 2, 4]), N);
+Image_ar = NUFFT.NUFFT_adj(permute(kSpace, [1, 3, 2, 4]), N);
 
 AR.Image_mean = Image_mean;
 AR.Image_ar = Image_ar;

@@ -40,6 +40,9 @@ max_out = max(vec(Image_out));
 max_ratio = max_out / max_FOV;
 if max_ratio < 0.4
     clearvars -except kSpace kx ky para
+    kSpace_ar = kSpace;
+    AR.m1 = ones(image_size, 'single');
+    AR.m2 = ones(image_size, 'single');
     return
 end
 
